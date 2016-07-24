@@ -36,7 +36,6 @@ y_data$activity <- activity[y_data$activity]
 ##5. Combine all into one tidy data set out of step 4
 
 t_data <- cbind(s_data, y_data, x_data)
-write.table(t_data, "tidy_dataset_1.txt")
 
 ##6. Create a second, independent tidy data set with the average of each variable 
 ## for each activity and each subject.
@@ -44,4 +43,4 @@ write.table(t_data, "tidy_dataset_1.txt")
 m_data <- melt(t_data, id.vars = c("subject", "activity"))
 tidy_data <- dcast(m_data, subject + activity ~ variable, mean)
 
-write.table(tidy_data, "tidy_dataset.txt")
+write.table(tidy_data, "tidy_dataset.txt", row.name=FALSE)
